@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamel — We Make Gold.</title>
+  <meta name="description" content="Flamel is a deep tech startup that literally makes gold. Yes, really. No, seriously.">
+  <meta property="og:title" content="Flamel — We Make Gold.">
+  <meta property="og:description" content="Atomic-scale chrysopoeia. Venture-backed alchemy. The future is Au.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4A843;
+      --gold-light: #F2D479;
+      --gold-dark: #A07C2A;
+      --bg: #0A0A0A;
+      --bg-card: #111111;
+      --bg-card-hover: #1A1A1A;
+      --text: #E8E8E8;
+      --text-muted: #888888;
+      --text-dim: #555555;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Utility */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .gold { color: var(--gold); }
+    .muted { color: var(--text-muted); }
+    .dim { color: var(--text-dim); }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--gold);
+    }
+
+    .logo span {
+      color: var(--text-dim);
+      font-weight: 400;
+      font-size: 0.7rem;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--gold);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 168, 67, 0.08);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(212, 168, 67, 0.08);
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 32px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+      max-width: 900px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-proof {
+      margin-top: 64px;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-proof .stat {
+      text-align: center;
+    }
+
+    .hero-proof .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .hero-proof .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* Ticker */
+    .ticker-wrap {
+      overflow: hidden;
+      padding: 20px 0;
+      border-top: 1px solid rgba(212, 168, 67, 0.08);
+      border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+      background: rgba(212, 168, 67, 0.02);
+    }
+
+    .ticker {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: max-content;
+    }
+
+    .ticker span {
+      flex-shrink: 0;
+      padding: 0 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      white-space: nowrap;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Section */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Problem Section */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .problem-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+
+    .problem-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(212, 168, 67, 0.1);
+    }
+
+    .problem-card .icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .problem-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .problem-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .steps {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+
+    .step-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(212, 168, 67, 0.15);
+      line-height: 1;
+    }
+
+    .step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .step .fine-print {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* Metrics */
+    .metrics {
+      background: rgba(212, 168, 67, 0.03);
+      border-top: 1px solid rgba(212, 168, 67, 0.08);
+      border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .metric {
+      text-align: center;
+      padding: 32px 16px;
+    }
+
+    .metric-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .metric-note {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .team-card:hover {
+      border-color: rgba(212, 168, 67, 0.15);
+    }
+
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(212, 168, 67, 0.1);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 2px solid rgba(212, 168, 67, 0.15);
+      overflow: hidden;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .team-card .role {
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .team-card .bio {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* Investors */
+    .investors {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .investor-logos {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 40px;
+      opacity: 0.4;
+    }
+
+    .investor-logos span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 120px 24px;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .waitlist-form input {
+      flex: 1;
+      min-width: 240px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-form input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .waitlist-form input:focus {
+      border-color: rgba(212, 168, 67, 0.3);
+    }
+
+    .waitlist-note {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 48px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 48px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .legal-wall {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 900px;
+    }
+
+    .legal-wall p {
+      margin-bottom: 8px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      margin-top: 48px;
+      max-width: 700px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 24px 0;
+    }
+
+    .faq-q {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .step { grid-template-columns: 48px 1fr; gap: 16px; }
+      .step-number { font-size: 2rem; }
+      .hero-proof { gap: 32px; }
+      .footer-links { gap: 32px; }
+      .investor-logos { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <div class="logo">Flamel<span>Au</span></div>
+      <ul class="nav-links">
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#waitlist" class="btn">Join Waitlist</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Now Transmuting
+    </div>
+    <h1>We Literally<br><em>Make Gold.</em></h1>
+    <p class="hero-sub">
+      Flamel is a venture-backed chrysopoeia startup using proprietary fusion-neutron transmutation to convert mercury into pure, elemental gold. We solved alchemy. It's a platform now.
+    </p>
+    <div class="hero-cta">
+      <a href="#waitlist" class="btn">Reserve Your Gold</a>
+      <a href="#how" class="btn btn-outline">See the Science&trade;</a>
+    </div>
+    <div class="hero-proof">
+      <div class="stat">
+        <div class="stat-value">29 pg</div>
+        <div class="stat-label">Gold Produced to Date</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">$4.7B</div>
+        <div class="stat-label">Projected TAM</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">~14 yr</div>
+        <div class="stat-label">Time to Deliverable Product</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Chrysopoeia-as-a-Service</span>
+      <span>&middot;</span>
+      <span>Y Combinator W26 (Applied)</span>
+      <span>&middot;</span>
+      <span>SOC 2 Pending</span>
+      <span>&middot;</span>
+      <span>ISO 9001 (Aspirational)</span>
+      <span>&middot;</span>
+      <span>"Not a Ponzi Scheme" — CEO</span>
+      <span>&middot;</span>
+      <span>Featured on HackerNews (flagged)</span>
+      <span>&middot;</span>
+      <span>NRC License (In Our Hearts)</span>
+      <span>&middot;</span>
+      <span>Mercury is a Planet AND a Feedstock</span>
+      <span>&middot;</span>
+      <span>Chrysopoeia-as-a-Service</span>
+      <span>&middot;</span>
+      <span>Y Combinator W26 (Applied)</span>
+      <span>&middot;</span>
+      <span>SOC 2 Pending</span>
+      <span>&middot;</span>
+      <span>ISO 9001 (Aspirational)</span>
+      <span>&middot;</span>
+      <span>"Not a Ponzi Scheme" — CEO</span>
+      <span>&middot;</span>
+      <span>Featured on HackerNews (flagged)</span>
+      <span>&middot;</span>
+      <span>NRC License (In Our Hearts)</span>
+      <span>&middot;</span>
+      <span>Mercury is a Planet AND a Feedstock</span>
+      <span>&middot;</span>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Gold mining is broken.<br>We're disrupting the periodic table.</h2>
+      <p class="section-desc">
+        For 6,000 years, humanity has been stuck digging shiny rocks out of the ground like animals. We asked: what if we just <em>made</em> the atoms instead?
+      </p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">&#9775;</div>
+          <h3>Ancient alchemists were right</h3>
+          <p>They just didn't have access to deuterium-tritium tokamak fusion reactors. We do. (Well, we will. Soon. Theoretically.)</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">&#9762;</div>
+          <h3>Mercury is basically gold already</h3>
+          <p>It's only one proton away. That's practically a rounding error. Our proprietary (n,2n) neutron reaction handles the rest in a process we call "atomic vibes."</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">&#128200;</div>
+          <h3>$11B TAM by 2034</h3>
+          <p>The medical radioisotope market is enormous. We plan to capture 100% of it, plus the bullion market, plus whatever else gold touches. Gold touches everything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="how-it-works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Four simple steps to transmute base metals into gold</h2>
+      <p class="section-desc">
+        Our vertically integrated chrysopoeia pipeline leverages cutting-edge nuclear physics. It's like Stripe, but for atoms.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div>
+            <h3>Acquire Mercury-198</h3>
+            <p>We source pharmaceutical-grade mercury feedstock from trusted international suppliers. Our procurement team has a "guy" who has a "guy."</p>
+            <span class="fine-print">* Flamel does not currently possess any mercury.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div>
+            <h3>Build a Fusion Reactor</h3>
+            <p>Our proprietary tokamak design replaces the standard lithium breeding blanket with a mercury-198 transmutation layer. We accelerate deuterium-tritium plasma to 150 million degrees to generate 14 MeV neutrons that trigger (n,2n) cascade reactions.</p>
+            <span class="fine-print">* Flamel does not currently possess a fusion reactor. Or tritium. Or a building.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div>
+            <h3>Wait</h3>
+            <p>The transmuted gold contains trace radioactive isotopes and must be stored in a heavily shielded sequestration vault for 14-18 years before it's safe for human contact. We prefer to describe this as a "maturation period," like a fine wine, or a treasury bond that could give you cancer.</p>
+            <span class="fine-print">* Flamel does not currently possess a sequestration vault, shielding materials, or patience.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <div>
+            <h3>Deliver Pure Gold</h3>
+            <p>After nearly two decades of radioactive decay, our gold achieves the isotopic purity required by international commodity markets. Ship to customer. Recognize revenue. Finally.</p>
+            <span class="fine-print">* Projected first delivery: 2044. Sincerely optimistic.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="metrics">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">By the Numbers</div>
+      <h2 class="section-title" style="text-align:center;">Metrics that speak for themselves</h2>
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="metric-value">89,000</div>
+          <div class="metric-label">Gold atoms per second</div>
+          <div class="metric-note">At peak theoretical capacity</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">10<sup style="font-size:0.5em">12</sup>x</div>
+          <div class="metric-label">Cost over spot price</div>
+          <div class="metric-note">One trillion times. Yes, trillion.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">150K</div>
+          <div class="metric-label">Person-hours for NRC license</div>
+          <div class="metric-note">We've completed about 3 of these</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Revenue (all time)</div>
+          <div class="metric-note">Pre-revenue is a vibe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <div class="container">
+      <div class="section-label">The Team</div>
+      <h2 class="section-title">World-class alchemists</h2>
+      <p class="section-desc">
+        Our founding team combines decades of experience in not producing gold.
+      </p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">
+            <!-- PLACEHOLDER: team-ceo.jpg — a person looking extremely confident in a lab coat they clearly just put on -->
+            &#129489;&#8205;&#128300;
+          </div>
+          <h3>Dr. Aurelia Mercurius</h3>
+          <div class="role">CEO & Chief Alchemist</div>
+          <div class="bio">Former McKinsey associate who watched a YouTube video about nuclear physics. "Transmutation is really just a state of mind." Dropped out of MBA program to pursue chrysopoeia full-time.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <!-- PLACEHOLDER: team-cto.jpg — a disheveled physicist looking at a whiteboard covered in nonsense equations -->
+            &#129489;&#8205;&#128187;
+          </div>
+          <h3>Ptolemy Vandenberg III</h3>
+          <div class="role">CTO & Neutron Whisperer</div>
+          <div class="bio">PhD in "adjacent disciplines." Built a cloud-native control plane for a reactor that doesn't exist. Says "tokenomics" in meetings about nuclear physics. Unironically owns a fedora.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <!-- PLACEHOLDER: team-cfo.jpg — a person surrounded by gold bars that are clearly painted bricks -->
+            &#129489;&#8205;&#128188;
+          </div>
+          <h3>Cassandra Ledger</h3>
+          <div class="role">CFO & Copium Officer</div>
+          <div class="bio">Specializes in financial models where revenue starts in Year 19. Previously ran numbers for three startups that "pivoted to consulting." Excel wizard. Vlookup truther.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <!-- PLACEHOLDER: team-head-of-vibes.jpg — someone meditating next to industrial equipment -->
+            &#129489;&#8205;&#127912;
+          </div>
+          <h3>Zephyr Goldstein</h3>
+          <div class="role">Head of Vibes & Isotope Relations</div>
+          <div class="bio">Manages stakeholder relationships with unstable isotopes. Personally named every mercury atom in our (theoretical) feedstock. Believes in the gold "on a spiritual level."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investors -->
+  <section class="investors">
+    <div class="container">
+      <div class="section-label">Backed By</div>
+      <h2 class="section-title">Investors who believe in the dream</h2>
+      <div class="investor-logos">
+        <span>Andreessen Horowitz*</span>
+        <span>Sequoia Capital*</span>
+        <span>My Uncle Steve</span>
+        <span>ARPA-E**</span>
+        <span>Definitely Real Ventures</span>
+      </div>
+      <p style="margin-top: 24px; font-size: 0.65rem; color: var(--text-dim); font-style: italic;">
+        * We emailed them. ** We Googled them.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Is this a scam?</div>
+          <div class="faq-a">Absolutely not. We are a <em>pre-revenue, pre-product, pre-reactor, pre-regulatory-approval</em> deep tech startup. That's completely different. We have a pitch deck and everything.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can you actually make gold?</div>
+          <div class="faq-a">Technically, yes! CERN produced 29 picograms over four years. That's 0.000000000029 grams. At current gold prices, that's worth approximately $0.000000002. We intend to scale this by mass-producing fusion reactors, which also don't commercially exist yet.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why is the gold radioactive?</div>
+          <div class="faq-a">Think of it as a feature, not a bug. Our gold comes with built-in beta radiation — perfect for cancer treatment, impractical for jewelry, and absolutely devastating for your Geiger counter. We like to say it has "energy."</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">When will I receive my gold?</div>
+          <div class="faq-a">Our current roadmap targets first delivery in 2044, accounting for reactor construction (5-10 years), NRC licensing (150,000 person-hours), and the mandatory 14-18 year radioactive sequestration period. We move fast and break atomic bonds.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if I want a refund?</div>
+          <div class="faq-a">Refunds are processed in gold atoms. At our current production rate of 89,000 atoms per second, a refund of one US dollar would take approximately 3.2 billion years. We appreciate your patience.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you have NRC approval?</div>
+          <div class="faq-a">We have NRC awareness. They know we exist. We assume they're impressed.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does "Chrysopoeia-as-a-Service" mean?</div>
+          <div class="faq-a">It means we added "-as-a-Service" to the ancient Greek word for gold-making. It's a SaaS business model, except instead of software, it's nuclear transmutation, and instead of recurring revenue, it's recurring grant applications.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="waitlist" class="cta-section">
+    <div class="container">
+      <h2>The gold rush starts <span class="gold">now.</span><br><span class="muted" style="font-size:0.5em;">Well, 2044. But sign up now.</span></h2>
+      <p>Join 0 other visionaries on the waitlist for humanity's first commercially transmuted gold.</p>
+      <form class="waitlist-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'color: var(--gold); font-size: 1.1rem; font-weight: 600;\'>You\'re on the list. See you in 2044. &#x2728;</p>'; ">
+        <input type="email" placeholder="alchemist@example.com" required>
+        <button type="submit" class="btn">Transmute Me</button>
+      </form>
+      <p class="waitlist-note">
+        By joining, you agree that gold delivery timelines are "aspirational" and that Flamel is not liable for any radioactive incidents, existential disappointment, or violations of the laws of thermodynamics.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">Flamel<span>Au</span></div>
+          <p>Transmuting base metals into gold and investor capital into press releases since 2026.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers (Hiring!)</a></li>
+              <li><a href="#">Blog (Coming Eventually)</a></li>
+              <li><a href="#">Press Kit (It's Just This Page)</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Terms of Transmutation</a></li>
+              <li><a href="#">Privacy (Yours, Not the Atoms')</a></li>
+              <li><a href="#">NRC Compliance (Aspirational)</a></li>
+              <li><a href="#">OSHA (We're Aware of It)</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Science</h4>
+            <ul>
+              <li><a href="#">Whitepaper (Vibes Only)</a></li>
+              <li><a href="#">arXiv Preprint (Someone Else's)</a></li>
+              <li><a href="#">GitHub (This Repo)</a></li>
+              <li><a href="#">Lab Photos (Stock Images)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="legal-wall">
+          <p>&copy; 2026 Flamel Technologies, Inc. All rights reserved. No gold was produced in the making of this website.</p>
+          <p>DISCLAIMER: Flamel is a satirical project. This is not a real company. Do not send us mercury. Do not send us money. Do not attempt nuclear transmutation at home. The production of gold via particle accelerator costs approximately one trillion times the market price of gold and takes longer than the age of the universe. Any resemblance to actual deep tech startups, living or pivoting, is entirely intentional.</p>
+          <p>Flamel is named after Nicolas Flamel (c. 1330–1418), the legendary French scrivener and manuscript seller who was posthumously credited with creating the Philosopher's Stone. He did not create the Philosopher's Stone. Neither will we. But we do have a waitlist.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
