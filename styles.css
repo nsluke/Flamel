@@ -6,8 +6,8 @@
   --bg-card: #111111;
   --bg-card-hover: #1A1A1A;
   --text: #E8E8E8;
-  --text-muted: #888888;
-  --text-dim: #555555;
+  --text-muted: #999999;
+  --text-dim: #777777;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -501,7 +501,7 @@ section {
   flex-wrap: wrap;
   align-items: center;
   margin-top: 40px;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .investor-logos span {
